@@ -59,7 +59,7 @@
                                         src="https://randomuser.me/api/portraits/women/33.jpg" alt="" />
                                 </div>
                                 <div class="text-sm">
-                                    <p class="font-bold">Scarlett Johansson</p>
+                                    <p class="font-bold">{{ $selected_user->name }}</p>
                                     <p>Active 1h ago</p>
                                 </div>
                             </div>
@@ -83,7 +83,7 @@
                                 </a>
                             </div> --}}
                         </div>
-                        <div class=" overflow-y-scroll">
+                        <div class="flex flex-col-reverse justify-end overflow-y-scroll">
                         @foreach ($messages as $item)
 
 
