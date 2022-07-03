@@ -13,12 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('messeges', function (Blueprint $table) {
+        Schema::create('messages', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('from_id')->nullable();
             $table->unsignedBigInteger('to_id')->nullable();
             $table->longText('body')->nullable();
+            $table->string('image')->nullable();
             $table->string('files')->nullable();
             $table->enum('is_seen',['0','1'])->default('0');
             $table->enum('type',['personal','group'])->default('personal');
@@ -34,6 +35,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('messeges');
+        Schema::dropIfExists('messages');
     }
 };
