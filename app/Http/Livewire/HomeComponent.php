@@ -11,10 +11,17 @@ class HomeComponent extends Component
 {
     public $userid;
     protected $queryString = ['userid'];
+    public function mount()
+    { Message::Where('thread', $this->userid.'-'.Auth::user()->id)->update(['is_seen' => '1']);
+
+
+    }
     public function render()
     {
         $selected_user=  User::where('id',$this->userid)->first();
-        $messages = Message::whereIn('user_id',[Auth::user()->id,$this->userid])->where('to_id',Auth::user()->id)->orWhere('to_id',$this->userid)->get();
+        $messages =  Message::where('thread', Auth::user()->id.'-'.$this->userid)->orWhere('thread', $this->userid.'-'.Auth::user()->id)->orderBy('id', 'desc')->get();
+
+
         // dd($messages);
         return view('livewire.home-component',compact('messages','selected_user'));
     }

@@ -1,4 +1,4 @@
-<div>
+<div wire:poll>
        @foreach ($users as $item)
     @if ($item->id != Auth::user()->id)
     <div class="contacts p-2 flex-1 overflow-y-scroll">
@@ -9,10 +9,18 @@
             </div>
 
     <a href="{{ url('home') }}?userid={{ $item->id }}" class="flex-auto min-w-0 ml-4 mr-6 hidden md:block group-hover:block">
-        <p>{{ $item->name }}</p>
+        <p>{{ $item->name }}
+
+            @php
+                $count = DB::table('messages')->where('thread',  $item->id.'-'.Auth::user()->id)->where('is_seen','0')->count();
+                echo  $count;
+            @endphp
+
+
+        </p>
         <div class="flex items-center text-sm text-gray-600">
             <div class="min-w-0">
-                <p class="truncate">{{ $item->LastChat ? $item->LastChat->body : '' }}</p>
+                {{-- <p class="truncate">{{ $item->LastChat ? $item->LastChat->body : '' }}</p> --}}
             </div>
             <p class="ml-2 whitespace-no-wrap">Just now</p>
         </div>

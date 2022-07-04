@@ -1,4 +1,4 @@
-<div>
+<div wire:poll>
     <form class="chat-footer flex-none">
         <div class="flex flex-row items-center p-4">
                 <label class="flex flex-shrink-0 focus:outline-none mx-2 block text-blue-600 hover:text-blue-700 w-6 h-6">
@@ -44,7 +44,7 @@
                     </button>
                 </label>
             </div>
-            <button wire:click.prevent="sendMessage" type="submit">fs</button>
+            <button wire:click.prevent="sendMessage" type="submit">Send</button>
         </div>
     </form>
 </div>

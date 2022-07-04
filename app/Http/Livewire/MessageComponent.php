@@ -3,6 +3,7 @@
 namespace App\Http\Livewire;
 
 use App\Models\Message;
+use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 
@@ -29,9 +30,11 @@ class MessageComponent extends Component
 
     public function sendMessage()
     {
-
+        $thread_value = auth()->user()->id . '-' .$this->userid;
+        
         Message::create([
             'user_id'=>auth()->user()->id,
+            'thread'=>$thread_value,
             'to_id'=>$this->userid,
             'body' => $this->body,
         ]);
