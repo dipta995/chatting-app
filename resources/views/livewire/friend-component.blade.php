@@ -16,7 +16,8 @@
 
               </span>
                      <img class="shadow-md rounded-full w-full h-full object-cover"
-                    src="https://randomuser.me/api/portraits/women/61.jpg" alt="" />
+                    {{-- src="{{ asset('storage/'.$item->avater)}}" alt="" /> --}}
+                    src="{{ ENV('ASSET_LINK_CUSTOMER').'storage/'.$item->avater }}" alt="" />
 
             </div>
 

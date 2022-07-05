@@ -1,12 +1,8 @@
 <div wire:poll>
-
-
         <x-slot name="header">
             <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-
             </h2>
         </x-slot>
-
         <div class="h-screen w-full flex antialiased text-gray-200 bg-gray-900 overflow-hidden">
             <div class="flex-1 flex flex-col">
 
@@ -59,7 +55,7 @@
                             <div class="flex">
                                 <div class="w-12 h-12 mr-4 relative flex flex-shrink-0">
                                     <img class="shadow-md rounded-full w-full h-full object-cover"
-                                        src="https://randomuser.me/api/portraits/women/33.jpg" alt="" />
+                                        src="{{ ENV('ASSET_LINK_CUSTOMER').'storage/'.$selected_user->avater }}" alt="" />
                                 </div>
                                 <div class="text-sm">
                                     <p class="font-bold">{{ $selected_user->name }}</p>
@@ -77,7 +73,7 @@
                             <div class="flex flex-row justify-start">
                                 <div class="w-8 h-8 relative flex flex-shrink-0 mr-4">
                                     <img class="shadow-md rounded-full w-full h-full object-cover"
-                                        src="https://randomuser.me/api/portraits/women/33.jpg" alt="" />
+                                        src="{{ ENV('ASSET_LINK_CUSTOMER').'storage/'.$selected_user->avater }}" alt="" />
                                 </div>
                                 <div class="messages text-sm text-gray-700 grid grid-flow-row gap-2">
                                     <div class="flex items-center group">
@@ -164,7 +160,4 @@
                 background: transparent;
             }
         </style>
-
-
-
 </div>

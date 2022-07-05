@@ -7,6 +7,7 @@ use App\Http\Controllers\Backend\DashboardController;
 use App\Http\Controllers\Backend\RolesController;
 use App\Http\Controllers\Backend\UserController;
 use App\Http\Livewire\HomeComponent;
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,11 +20,10 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-    Route::get('/home', HomeComponent::class)->name('dashboard');
-
-
-
+Route::get('/storage-shortcut', function () {
+    Artisan::call('storage:link');
+});
+    Route::get('/home', HomeComponent::class)->middleware(['auth'])->name('dashboard');
 
 Route::get('/', function () {
     return view('welcome');
@@ -44,6 +44,6 @@ Route::resource('users', UserController::class,['names'=>'admin.users']);
 });
 // Route::get('/dashboard', function () {
 //     return view('dashboard');
-// })->middleware(['auth'])->name('dashboard');
+// })
 
 require __DIR__.'/auth.php';
